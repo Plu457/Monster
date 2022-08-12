@@ -1,13 +1,15 @@
-import React from "react";
-import "./SearchBox.scss";
+import React from 'react';
+import './SearchBox.scss';
 
-function SearchBox(props) {
+function SearchBox({ setUserInput }) {
+  const handleChange = e => setUserInput(e.target.value);
+
   return (
     <input
       className="search"
       type="search"
       placeholder="Search..."
-      onChange={props.handleChange}
+      onChange={handleChange}
     />
   );
 }

@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import SearchBox from './Components/SearchBox/SearchBox';
 import CardList from './Components/CardList/CardList';
@@ -45,12 +44,22 @@ function Monsters() {
   }, []);
 
   // SearchBox 에 props로 넘겨줄 handleChange 메소드 정의
+  const filteredList = () => {
+    const filtered = monsters.filter(
+      item =>
+        userInput.length >= 2 &&
+        (item.name.toLowerCase() === userInput ||
+          item.name.toLowerCase().includes(userInput)),
+    );
+
+    return filtered.length > 0 ? filtered : monsters;
+  };
 
   return (
     <div className="monsters">
       <h1>컴포넌트 재사용 연습!</h1>
-      {/* <SearchBox handleChange=정의한메소드 /> */}
-      <CardList monsters={monsters} />
+      <SearchBox setUserInput={setUserInput} />
+      <CardList monsters={filteredList()} />
     </div>
   );
 }
