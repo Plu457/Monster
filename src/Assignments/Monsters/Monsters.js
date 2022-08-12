@@ -25,6 +25,25 @@ function Monsters() {
   const [monsters, setMonsters] = useState([]);
   const [userInput, setUserInput] = useState('');
 
+  useEffect(() => {
+    const checkStatus = res => {
+      if (!res) throw new Error(`Again Check Status: ${res.status}`);
+      return res.json();
+    };
+
+    const uploadMonstarData = data => {
+      setMonsters(data);
+    };
+
+    const getMonsterData = url => fetch(url);
+
+    getMonsterData('https://jsonplaceholder.typicode.com/users')
+      .then(checkStatus)
+      .then(uploadMonstarData)
+      .catch(console.error);
+  }, []);
+
+  console.log('monsters', monsters);
   // 데이터 로딩
 
   // SearchBox 에 props로 넘겨줄 handleChange 메소드 정의
