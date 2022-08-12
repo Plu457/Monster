@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import SearchBox from "./Components/SearchBox/SearchBox";
-import CardList from "./Components/CardList/CardList";
-import "./Monsters.scss";
+import React, { useState } from 'react';
+import SearchBox from './Components/SearchBox/SearchBox';
+import CardList from './Components/CardList/CardList';
+import './Monsters.scss';
+import { useEffect } from 'react';
 
 /**********************************************************
   API 주소: https://jsonplaceholder.typicode.com/users
@@ -22,7 +23,7 @@ import "./Monsters.scss";
 
 function Monsters() {
   const [monsters, setMonsters] = useState([]);
-  const [userInput, setUserInput] = useState("");
+  const [userInput, setUserInput] = useState('');
 
   // 데이터 로딩
 
